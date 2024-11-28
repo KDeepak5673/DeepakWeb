@@ -1,0 +1,1 @@
+export const ProfilePhoto = 'https://res.cloudinary.com/dwk5hmz2o/image/upload/v1732820501/WhatsApp_Image_2024-11-28_at_21.14.51_77a240e2_thhmda.jpg'
