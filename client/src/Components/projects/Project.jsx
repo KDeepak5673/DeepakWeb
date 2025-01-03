@@ -5,7 +5,7 @@ import projectData from "./ProjectData"; // Import the project data
 
 const Projects = () => {
     return (
-        <Box id="projects" sx={{ padding: "60px 0", backgroundColor: "#f9f9f9" }}>
+        <Box id="projects" sx={{ padding: "60px 0" }}>
             <Container>
                 <Typography
                     variant="h4"
