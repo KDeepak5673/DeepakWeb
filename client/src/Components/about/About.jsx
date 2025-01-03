@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Container, styled } from "@mui/material";
+import { Box, Typography,  styled } from "@mui/material";
 
 import YourPhoto from "../../public/Photo.JPG";
 
@@ -17,7 +17,7 @@ const Content = styled(Box)`
 
 const About = () => {
     return (
-        <Box id="about" sx={{ padding: "60px 0", backgroundColor: "#f4f4f4" }}>
+        <Box id="about" sx={{ width: "100%",padding: "60px 0", backgroundColor: "#f4f4f4" }}>
             <Box sx={{ width: "100% "  , margin: "0px", padding: "0" }}>
                 <Typography variant="h4" sx={{ fontWeight: "bold", marginBottom: "20px", display: "flex", justifyContent: "center" }}>
                     About Me
