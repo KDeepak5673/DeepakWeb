@@ -37,9 +37,6 @@ const Overlay = styled(Box)`
     opacity: 0;
     transition: opacity 0.3s;
 
-    &:hover {
-        opacity: 1;
-    }
 `;
 
 const Profile = () => {

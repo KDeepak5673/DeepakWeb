@@ -11,8 +11,8 @@ const Homepage = () => {
             <Navbar />
             <Hero />
             <About />
-            {/* <Projects /> */}
-            {/* <Footer /> */}
+            <Projects />
+            <Footer />
         </div>
     );
 };

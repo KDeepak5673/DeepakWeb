@@ -3,7 +3,7 @@ import { Box, Typography, styled, Link, Button } from "@mui/material";
 
 import { Link as Scroll } from "react-scroll";
 
-import YourPhoto from "../../public/Photo.JPG"; // Import your image here
+import YourPhoto from "../../public/Photo.JPG"; 
 
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
@@ -30,6 +30,8 @@ const Image = styled(Box)`
      
     display: flex;
     align-items: center;
+
+    
     
 `
 const Contact = styled(Box)`
