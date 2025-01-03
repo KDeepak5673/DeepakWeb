@@ -1,116 +1,89 @@
-import React, { useState, useRef } from "react";
-import { Box, TextField, Button, Typography } from "@mui/material";
-import emailjs from "emailjs-com"; // Import EmailJS
+import React, { useState } from "react";
+import { AppBar, Toolbar, Typography, Button, Box, styled, IconButton, Drawer } from "@mui/material";
+import { Link } from "react-scroll"; // For scroll links
+import MenuIcon from '@mui/icons-material/Menu';
 
-const ContactForm = () => {
-    // State for form fields
-    const [userName, setUserName] = useState("");
-    const [userEmail, setUserEmail] = useState("");
-    const [message, setMessage] = useState("");
-    const [status, setStatus] = useState(""); // To display success or error messages
+const Header = styled(AppBar)`
+    background: white;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.1);
+    color: black;
+    padding: 5px 150px;
+    z-index: 999;
+    
+    @media (max-width: 1200px) {
+        padding: 5px 100px;
+    }
 
-    // Reference for the form element
-    const form = useRef();
+    @media (max-width: 768px) {
+        padding: 5px 20px;
+    }
 
-    // Handle form submission
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    @media (max-width: 480px) {
+        padding: 5px 10px;
+    }
+`;
 
-        // Send email using EmailJS
-        emailjs
-            .sendForm(
-                "service_pz35m4d", // Service ID
-                "template_knmpp29", // Template ID
-                form.current, // Form element
-                "OO4mkdTjq7eEoB5d6" // Public key
-            )
-            .then(
-                (response) => {
-                    setStatus("Message sent successfully!");
-                    console.log(response);
-                    // Reset form fields after submission
-                    setUserName("");
-                    setUserEmail("");
-                    setMessage("");
-                },
-                (error) => {
-                    setStatus("Failed to send message. Please try again.");
-                    console.log(error);
-                }
-            );
+const Navbar = () => {
+    const [open, setOpen] = useState(false);
+
+    const toggleDrawer = (open) => {
+        setOpen(open);
     };
 
     return (
-        <Box sx={{ padding: "60px 0", display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <Typography
-                variant="h4"
-                sx={{
-                    fontWeight: "bold",
-                    marginBottom: "40px",
-                    textAlign: "center",
-                    color: "#333",
-                }}
-            >
-                Contact
-            </Typography>
-
-            {/* Contact Form */}
-            <form ref={form} onSubmit={handleSubmit} style={{ maxWidth: "500px", width: "100%", padding: "20px", borderRadius: "8px" }}>
-                <TextField
-                    label="Name"
-                    variant="outlined"
-                    fullWidth
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                    sx={{ marginBottom: "15px" }}
-                    name="UserName" // Make sure the input name matches the placeholder in your template
-                    required
-                />
-                <TextField
-                    label="Email"
-                    variant="outlined"
-                    type="email"
-                    fullWidth
-                    value={userEmail}
-                    onChange={(e) => setUserEmail(e.target.value)}
-                    sx={{ marginBottom: "15px" }}
-                    name="UserEmail" // Make sure the input name matches the placeholder in your template
-                    required
-                />
-                <TextField
-                    label="Message"
-                    variant="outlined"
-                    fullWidth
-                    multiline
-                    rows={4}
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    sx={{ marginBottom: "15px" }}
-                    name="message" // Make sure the input name matches the placeholder in your template
-                    required
-                />
-                <Button type="submit" variant="contained" color="primary" sx={{
-                    width: "40%", display: "block",  // Make the button block-level to respect the width property
-                    padding: "5px", fontSize: "16px", margin: "0 auto"
-                }}>
-                    Send Message
-                </Button>
-            </form>
-
-            {/* Display status */}
-            {status && (
-                <Typography
-                    sx={{
-                        textAlign: "center",
-                        marginTop: "20px",
-                        color: status.includes("success") ? "green" : "red",
-                    }}
-                >
-                    {status}
+        <Header>
+            <Toolbar sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+                <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                    <Link to="home" smooth duration={1000} style={{ textDecoration: 'none', cursor: "pointer" }} >
+                        Deepak Kumar
+                    </Link>
                 </Typography>
-            )}
-        </Box>
+
+                {/* Desktop View */}
+                <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: "20px", flexWrap: "wrap", justifyContent: "flex-end" }}>
+                    <Button component={Link} to="home" smooth duration={1000} sx={{ color: "black", textAlign: "left" }}>
+                        Home
+                    </Button>
+                    <Button component={Link} to="about" smooth duration={1000} sx={{ color: "black", textAlign: "left" }}>
+                        About
+                    </Button>
+                    <Button component={Link} to="projects" smooth duration={1000} sx={{ color: "black", textAlign: "left" }}>
+                        Projects
+                    </Button>
+                    <Button component={Link} to="contact" smooth duration={1000} sx={{ color: "black", textAlign: "left" }}>
+                        Contact
+                    </Button>
+                </Box>
+
+                {/* Hamburger Menu Icon for Mobile View */}
+                <IconButton
+                    color="black"
+                    sx={{ display: { xs: 'block', sm: 'none' } }}
+                    onClick={() => toggleDrawer(true)}
+                >
+                    <MenuIcon />
+                </IconButton>
+            </Toolbar>
+
+            {/* Drawer (Side Menu) */}
+            <Drawer anchor="right" open={open} onClose={() => toggleDrawer(false)}>
+                <Box sx={{ width: 250, padding: "20px" }}>
+                    <Button component={Link} to="home" smooth duration={1000} sx={{ color: "black", marginBottom: "15px" }} onClick={() => toggleDrawer(false)}>
+                        Home
+                    </Button>
+                    <Button component={Link} to="about" smooth duration={1000} sx={{ color: "black", marginBottom: "15px" }} onClick={() => toggleDrawer(false)}>
+                        About
+                    </Button>
+                    <Button component={Link} to="projects" smooth duration={1000} sx={{ color: "black", marginBottom: "15px" }} onClick={() => toggleDrawer(false)}>
+                        Projects
+                    </Button>
+                    <Button component={Link} to="contact" smooth duration={1000} sx={{ color: "black" }} onClick={() => toggleDrawer(false)}>
+                        Contact
+                    </Button>
+                </Box>
+            </Drawer>
+        </Header>
     );
 };
 
-export default ContactForm;
+export default Navbar;
