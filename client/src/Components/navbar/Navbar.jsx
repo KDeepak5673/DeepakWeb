@@ -1,6 +1,7 @@
-import React from "react";
-import { AppBar, Toolbar, Typography, Button, Box, styled } from "@mui/material";
+import React, { useState } from "react";
+import { AppBar, Toolbar, Typography, Button, Box, styled, IconButton, Drawer } from "@mui/material";
 import { Link } from "react-scroll"; // For scroll links
+import MenuIcon from '@mui/icons-material/Menu';
 
 const Header = styled(AppBar)`
     background: white;
@@ -23,6 +24,12 @@ const Header = styled(AppBar)`
 `;
 
 const Navbar = () => {
+    const [open, setOpen] = useState(false);
+
+    const toggleDrawer = (open) => {
+        setOpen(open);
+    };
+
     return (
         <Header>
             <Toolbar sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
@@ -32,7 +39,8 @@ const Navbar = () => {
                     </Link>
                 </Typography>
 
-                <Box sx={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "flex-end" }}>
+                {/* Desktop View */}
+                <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: "20px", flexWrap: "wrap", justifyContent: "flex-end" }}>
                     <Button component={Link} to="home" smooth duration={1000} sx={{ color: "black", textAlign: "left" }}>
                         Home
                     </Button>
@@ -46,7 +54,46 @@ const Navbar = () => {
                         Contact
                     </Button>
                 </Box>
+
+                {/* Hamburger Menu Icon for Mobile View */}
+                <IconButton
+                    color="black"
+                    sx={{ display: { xs: 'block', sm: 'none' } }}
+                    onClick={() => toggleDrawer(true)}
+                >
+                    <MenuIcon />
+                </IconButton>
             </Toolbar>
+
+            {/* Drawer (Side Menu) */}
+            <Drawer 
+                anchor="right" 
+                open={open} 
+                onClose={() => toggleDrawer(false)} 
+                sx={{ 
+                    "& .MuiDrawer-paper": { 
+                        width: "100%", 
+                        maxWidth: "300px", 
+                        zIndex: 1100, // Ensures Drawer appears above all other content
+                        transition: "width 0.3s ease", // Smooth opening/closing transition
+                    }
+                }}
+            >
+                <Box sx={{ padding: "20px", width: "100%" }}>
+                    <Button component={Link} to="home" smooth duration={1000} sx={{ color: "black", marginBottom: "15px" }} onClick={() => toggleDrawer(false)}>
+                        Home
+                    </Button>
+                    <Button component={Link} to="about" smooth duration={1000} sx={{ color: "black", marginBottom: "15px" }} onClick={() => toggleDrawer(false)}>
+                        About
+                    </Button>
+                    <Button component={Link} to="projects" smooth duration={1000} sx={{ color: "black", marginBottom: "15px" }} onClick={() => toggleDrawer(false)}>
+                        Projects
+                    </Button>
+                    <Button component={Link} to="contact" smooth duration={1000} sx={{ color: "black" }} onClick={() => toggleDrawer(false)}>
+                        Contact
+                    </Button>
+                </Box>
+            </Drawer>
         </Header>
     );
 };
