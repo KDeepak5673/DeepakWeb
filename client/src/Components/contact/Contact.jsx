@@ -41,7 +41,7 @@ const ContactForm = () => {
     };
 
     return (
-        <Box sx={{ padding: "60px 0", backgroundColor: "#f9f9f9", display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <Box id="contact" sx={{ padding: "60px 0", backgroundColor: "#f9f9f9", display: "flex", flexDirection: "column", alignItems: "center" }}>
             <Typography
                 variant="h4"
                 sx={{
@@ -51,11 +51,11 @@ const ContactForm = () => {
                     color: "#333",
                 }}
             >
-                Contact Me
+                Contact
             </Typography>
 
             {/* Contact Form */}
-            <form ref={form} onSubmit={handleSubmit} style={{ maxWidth: "500px", width: "100%", padding: "20px", borderRadius: "8px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", backgroundColor: "#fff" }}>
+            <form ref={form} onSubmit={handleSubmit} style={{ maxWidth: "500px", width: "100%", padding: "20px", borderRadius: "8px" }}>
                 <TextField
                     label="Name"
                     variant="outlined"
