@@ -3,6 +3,7 @@ import Image2 from "./Images/Project2.png"
 import Image3 from "./Images/Project3.png"
 import Image4 from "./Images/Project4.png"
 import Image5 from "./Images/Project5.png"
+import Image6 from "./Images/Project6.png"
 
 
 
@@ -10,6 +11,13 @@ import Image5 from "./Images/Project5.png"
 const projectData = [
     {
         id: 1,
+        title: "Farm Flow",
+        technologies: "React, NodeJS, Vercel",
+        codeLink: "https://github.com/KDeepak5673/EPICS_FarmFlow_Suhani",
+        image: Image6, 
+    },
+    {
+        id: 6,
         title: "Scholar Net - A Student Management System",
         technologies: "React, Node.js, MongoDB",
         codeLink: "https://github.com/KDeepak5673/ScholarNet",
@@ -41,8 +49,9 @@ const projectData = [
         title: "A Tic Tac Toe Game",
         technologies: "JavaScript, Vercel",
         codeLink: "https://github.com/KDeepak5673/Tic-Tac-Toe",
-        image: Image5, 
-    },
+        image: Image5,
+    }
+    
 ];
 
 export default projectData;

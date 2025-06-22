@@ -19,6 +19,7 @@ const Profile = styled(Box)`
     padding: 200px;
     align-items: center;
     position: relative;
+    // background : "linear-gradient(to right, #001b48, #d6e8ee)" ;
     
     @media (max-width: 1200px) {
         padding: 150px;
@@ -86,7 +87,7 @@ const Source = styled(Link)`
 
 const Hero = () => {
     return (
-        <Profile id="home">
+        <Profile id="home" >
             <Bio>
                 <Typography variant="h2" color="black" fontWeight="bold" sx={{ letterSpacing: '2px', lineHeight: 1.5 }}>
                     Hello, <br />

@@ -8,12 +8,12 @@ import Contact from "./contact/Contact";
 
 const Homepage = () => {
     return (
-        <div>
+        <div  >
             <Navbar />
             <Hero />
             <About />
             <Projects />
-            <Contact/>
+            <Contact />
             <Footer />
         </div>
     );
