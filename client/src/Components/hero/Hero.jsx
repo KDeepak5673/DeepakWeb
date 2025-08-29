@@ -96,7 +96,7 @@ const Hero = () => {
                     </Link>
                 </Typography>
                 <Typography variant="h4" color="black" sx={{ letterSpacing: '2px', lineHeight: 1.4 }}>
-                    Passionate about Web Development and  <br /> Java Developer
+                    Passionate about Web Development and  <br /> Cloud Enthusiast.
                 </Typography>
 
                 <Contact>
